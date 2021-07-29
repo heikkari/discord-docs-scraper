@@ -1,0 +1,2179 @@
+{
+    "Store": {
+      "requests": [
+        [
+          {
+            "name": "Get Entitlements",
+            "method": "GET",
+            "url": "/applications/{application.id}/entitlements"
+          },
+          {
+            "name": "Get Entitlement",
+            "method": "GET",
+            "url": "/applications/{application.id}/entitlements/{entitlement.id}"
+          },
+          {
+            "name": "Get SKUs",
+            "method": "GET",
+            "url": "/applications/{application.id}/skus"
+          },
+          {
+            "name": "Consume SKU",
+            "method": "POST",
+            "url": "/applications/{application.id}/entitlements/{entitlement.id}/consume"
+          },
+          {
+            "name": "Delete Test Entitlement",
+            "method": "DELETE",
+            "url": "/applications/{application.id}/entitlements/{entitlement.id}"
+          },
+          {
+            "name": "Create Purchase Discount",
+            "method": "PUT",
+            "url": "/store/skus/{sku.id}/discounts/{user.id}"
+          },
+          {
+            "name": "Delete Purchase Discount",
+            "method": "DELETE",
+            "url": "/store/skus/{sku.id}/discounts/{user.id}"
+          }
+        ]
+      ]
+    },
+    "Message_Components": {
+      "structures": [
+        {
+          "Component": {
+            "type": "integer",
+            "custom_id?": "string",
+            "disabled?": "boolean",
+            "style?": "integer",
+            "label?": "string",
+            "emoji?": "partial emoji",
+            "url?": "string",
+            "options": "array of select options",
+            "placeholder?": "string",
+            "min_values?": "integer",
+            "max_values?": "integer",
+            "components?": "array of components"
+          },
+          "Button": {
+            "type": "integer",
+            "style": "integer",
+            "label?": "string",
+            "emoji?": "partial emoji",
+            "custom_id?": "string",
+            "url?": "string",
+            "disabled?": "boolean"
+          },
+          "SelectMenu": {
+            "type": "integer",
+            "custom_id": "string",
+            "options": "array of select options",
+            "placeholder?": "string",
+            "min_values?": "integer",
+            "max_values?": "integer",
+            "disabled?": "boolean"
+          },
+          "SelectOption": {
+            "label": "string",
+            "value": "string",
+            "description?": "string",
+            "emoji?": "partial emoji object",
+            "default?": "boolean"
+          }
+        }
+      ]
+    },
+    "Slash_Commands": {
+      "structures": [
+        {
+          "Interaction": {
+            "id": "snowflake",
+            "application_id": "snowflake",
+            "type": "interaction type",
+            "data?\\*": "application command interaction data",
+            "guild_id?": "snowflake",
+            "channel_id?": "snowflake",
+            "member?\\*\\*": "guild member object",
+            "user?": "user object",
+            "token": "string",
+            "version": "integer",
+            "message?": "message object"
+          },
+          "ApplicationCommandInteractionData": {
+            "id": "snowflake",
+            "name": "string",
+            "resolved?": "application command interaction data resolved",
+            "options?": "array of application command interaction data option",
+            "custom_id": "string",
+            "component_type": "integer"
+          },
+          "InteractionResponse": {
+            "type": "interaction callback type",
+            "data?": "interaction application command callback data"
+          },
+          "MessageInteraction": {
+            "id": "snowflake",
+            "type": "interaction type",
+            "name": "string",
+            "user": "user object"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Global Application Commands",
+            "method": "GET",
+            "url": "/applications/{application.id}/commands"
+          },
+          {
+            "name": "Create Global Application Command",
+            "method": "POST",
+            "url": "/applications/{application.id}/commands",
+            "json": {
+              "name": "string",
+              "description": "string",
+              "options?": "array of application command option",
+              "default_permission?": "boolean (default `true`)"
+            }
+          },
+          {
+            "name": "Get Global Application Command",
+            "method": "GET",
+            "url": "/applications/{application.id}/commands/{command.id}"
+          },
+          {
+            "name": "Edit Global Application Command",
+            "method": "PATCH",
+            "url": "/applications/{application.id}/commands/{command.id}",
+            "json": {
+              "name": "string",
+              "description": "string",
+              "options?": "array of application command option",
+              "default_permission?": "boolean (default `true`)"
+            }
+          },
+          {
+            "name": "Delete Global Application Command",
+            "method": "DELETE",
+            "url": "/applications/{application.id}/commands/{command.id}"
+          },
+          {
+            "name": "Get Guild Application Commands",
+            "method": "GET",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands"
+          },
+          {
+            "name": "Bulk Overwrite Global Application Commands",
+            "method": "PUT",
+            "url": "/applications/{application.id}/commands"
+          },
+          {
+            "name": "Create Guild Application Command",
+            "method": "POST",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands",
+            "json": {
+              "name": "string",
+              "description": "string",
+              "options?": "array of application command option",
+              "default_permission?": "boolean (default `true`)"
+            }
+          },
+          {
+            "name": "Get Guild Application Command",
+            "method": "GET",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/{command.id}"
+          },
+          {
+            "name": "Edit Guild Application Command",
+            "method": "PATCH",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/{command.id}",
+            "json": {
+              "name": "string",
+              "description": "string",
+              "options?": "array of application command option",
+              "default_permission?": "boolean (default `true`)"
+            }
+          },
+          {
+            "name": "Delete Guild Application Command",
+            "method": "DELETE",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/{command.id}"
+          },
+          {
+            "name": "Bulk Overwrite Guild Application Commands",
+            "method": "PUT",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands"
+          },
+          {
+            "name": "Create Interaction Response",
+            "method": "POST",
+            "url": "/interactions/{interaction.id}/{interaction.token-object}/callback"
+          },
+          {
+            "name": "Get Original Interaction Response",
+            "method": "GET",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/@original"
+          },
+          {
+            "name": "Edit Original Interaction Response",
+            "method": "PATCH",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/@original"
+          },
+          {
+            "name": "Delete Original Interaction Response",
+            "method": "DELETE",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/@original"
+          },
+          {
+            "name": "Create Followup Message",
+            "method": "POST",
+            "url": "/webhooks/{application.id}/{interaction.token}"
+          },
+          {
+            "name": "Get Followup Message",
+            "method": "GET",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/{message.id}"
+          },
+          {
+            "name": "Edit Followup Message",
+            "method": "PATCH",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/{message.id}"
+          },
+          {
+            "name": "Delete Followup Message",
+            "method": "DELETE",
+            "url": "/webhooks/{application.id}/{interaction.token}/messages/{message.id}"
+          },
+          {
+            "name": "Get Guild Application Command Permissions",
+            "method": "GET",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/permissions"
+          },
+          {
+            "name": "Get Application Command Permissions",
+            "method": "GET",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions"
+          },
+          {
+            "name": "Edit Application Command Permissions",
+            "method": "PUT",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions",
+            "json": {
+              "permissions": "array of application command permissions"
+            }
+          },
+          {
+            "name": "Batch Edit Application Command Permissions",
+            "method": "PUT",
+            "url": "/applications/{application.id}/guilds/{guild.id}/commands/permissions"
+          }
+        ]
+      ]
+    },
+    "Application": {
+      "structures": [
+        {
+          "Application": {
+            "id": "snowflake",
+            "name": "string",
+            "icon": "?string",
+            "description": "string",
+            "rpc_origins?": "array of strings",
+            "bot_public": "boolean",
+            "bot_require_code_grant": "boolean",
+            "terms_of_service_url?": "string",
+            "privacy_policy_url?": "string",
+            "owner?": "partial user object",
+            "summary": "string",
+            "verify_key": "string",
+            "team": "?team object",
+            "guild_id?": "snowflake",
+            "primary_sku_id?": "snowflake",
+            "slug?": "string",
+            "cover_image?": "string",
+            "flags?": "integer"
+          }
+        }
+      ]
+    },
+    "Audit_Log": {
+      "structures": [
+        {
+          "AuditLog": {
+            "webhooks": "array of webhook objects",
+            "users": "array of user objects",
+            "audit_log_entries": "array of audit log entry objects",
+            "integrations": "array of partial integration objects",
+            "threads": "array of channel objects"
+          },
+          "AuditLogEntry": {
+            "target_id": "?string",
+            "changes?": "array of audit log change objects",
+            "user_id": "?snowflake",
+            "id": "snowflake",
+            "action_type": "audit log event",
+            "options?": "optional audit entry info",
+            "reason?": "string"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Guild Audit Log",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/audit-logs",
+            "json": {
+              "user_id": "snowflake",
+              "action_type": "integer",
+              "before": "snowflake",
+              "limit": "integer"
+            }
+          }
+        ]
+      ]
+    },
+    "Channel": {
+      "structures": [
+        {
+          "Channel": {
+            "id": "snowflake",
+            "type": "integer",
+            "guild_id?": "snowflake",
+            "position?": "integer",
+            "permission_overwrites?": "array of overwrite objects",
+            "name?": "string",
+            "topic?": "?string",
+            "nsfw?": "boolean",
+            "last_message_id?": "?snowflake",
+            "bitrate?": "integer",
+            "user_limit?": "integer",
+            "rate_limit_per_user?\\*": "integer",
+            "recipients?": "array of user objects",
+            "icon?": "?string",
+            "owner_id?": "snowflake",
+            "application_id?": "snowflake",
+            "parent_id?": "?snowflake",
+            "last_pin_timestamp?": "?ISO8601 timestamp",
+            "rtc_region?": "?string",
+            "video_quality_mode?": "integer",
+            "message_count?": "integer",
+            "member_count?": "integer",
+            "thread_metadata?": "a thread metadata object",
+            "member?": "a thread member object",
+            "default_auto_archive_duration?": "integer",
+            "permissions?": "string"
+          },
+          "Message": {
+            "id": "snowflake",
+            "channel_id": "snowflake",
+            "guild_id?": "snowflake",
+            "author\\*": "user object",
+            "member?\\*\\*": "partial guild member object",
+            "content": "string",
+            "timestamp": "ISO8601 timestamp",
+            "edited_timestamp": "?ISO8601 timestamp",
+            "tts": "boolean",
+            "mention_everyone": "boolean",
+            "mentions\\*\\*\\*": "array of user](#DOCS_RESOURCES_USER/user-object) objects, with an additional partial [member field",
+            "mention_roles": "array of role object ids",
+            "mention_channels?\\*\\*\\*\\*": "array of channel mention objects",
+            "attachments": "array of attachment objects",
+            "embeds": "array of embed objects",
+            "reactions?": "array of reaction objects",
+            "nonce?": "integer or string",
+            "pinned": "boolean",
+            "webhook_id?": "snowflake",
+            "type": "integer",
+            "activity?": "message activity object",
+            "application?": "partial application object",
+            "application_id?": "snowflake",
+            "message_reference?": "message reference object",
+            "flags?": "integer",
+            "referenced_message?\\*\\*\\*\\*\\*": "?message object",
+            "interaction?": "message interaction object",
+            "thread?": "channel object",
+            "components?": "Array of message components",
+            "sticker_items?": "array of message sticker item objects",
+            "stickers?": "array of sticker objects"
+          },
+          "MessageActivity": {
+            "type": "integer",
+            "party_id?": "string"
+          },
+          "MessageReference": {
+            "message_id?": "snowflake",
+            "channel_id? \\*": "snowflake",
+            "guild_id?": "snowflake",
+            "fail_if_not_exists?": "boolean"
+          },
+          "FollowedChannel": {
+            "channel_id": "snowflake",
+            "webhook_id": "snowflake"
+          },
+          "Reaction": {
+            "count": "integer",
+            "me": "boolean",
+            "emoji": "partial emoji object"
+          },
+          "Overwrite": {
+            "id": "snowflake",
+            "type": "int",
+            "allow": "string",
+            "deny": "string"
+          },
+          "ThreadMetadata": {
+            "archived": "boolean",
+            "auto_archive_duration": "integer",
+            "archive_timestamp": "ISO8601 timestamp",
+            "locked?": "boolean"
+          },
+          "ThreadMember": {
+            "id? \\*": "snowflake",
+            "user_id? \\*": "snowflake",
+            "join_timestamp": "ISO8601 timestamp",
+            "flags": "integer"
+          },
+          "Embed": {
+            "title?": "string",
+            "type?": "string",
+            "description?": "string",
+            "url?": "string",
+            "timestamp?": "ISO8601 timestamp",
+            "color?": "integer",
+            "footer?": "embed footer object",
+            "image?": "embed image object",
+            "thumbnail?": "embed thumbnail object",
+            "video?": "embed video object",
+            "provider?": "embed provider object",
+            "author?": "embed author object",
+            "fields?": "array of embed field objects"
+          },
+          "EmbedThumbnail": {
+            "url?": "string",
+            "proxy_url?": "string",
+            "height?": "integer",
+            "width?": "integer"
+          },
+          "EmbedVideo": {
+            "url?": "string",
+            "proxy_url?": "string",
+            "height?": "integer",
+            "width?": "integer"
+          },
+          "EmbedImage": {
+            "url?": "string",
+            "proxy_url?": "string",
+            "height?": "integer",
+            "width?": "integer"
+          },
+          "EmbedProvider": {
+            "name?": "string",
+            "url?": "string"
+          },
+          "EmbedAuthor": {
+            "name?": "string",
+            "url?": "string",
+            "icon_url?": "string",
+            "proxy_icon_url?": "string"
+          },
+          "EmbedFooter": {
+            "text": "string",
+            "icon_url?": "string",
+            "proxy_icon_url?": "string"
+          },
+          "EmbedField": {
+            "name": "string",
+            "value": "string",
+            "inline?": "boolean"
+          },
+          "Attachment": {
+            "id": "snowflake",
+            "filename": "string",
+            "content_type?": "string",
+            "size": "integer",
+            "url": "string",
+            "proxy_url": "string",
+            "height?": "?integer",
+            "width?": "?integer"
+          },
+          "ChannelMention": {
+            "id": "snowflake",
+            "guild_id": "snowflake",
+            "type": "integer",
+            "name": "string"
+          },
+          "AllowedMentions": {
+            "parse": "array of allowed mention types",
+            "roles": "list of snowflakes",
+            "users": "list of snowflakes",
+            "replied_user": "boolean"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Channel",
+            "method": "GET",
+            "url": "/channels/{channel.id}"
+          },
+          {
+            "name": "Modify Channel",
+            "method": "PATCH",
+            "url": "/channels/{channel.id}"
+          },
+          {
+            "name": "Delete/Close Channel",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}"
+          },
+          {
+            "name": "Get Channel Messages",
+            "method": "GET",
+            "url": "/channels/{channel.id}/messages",
+            "json": {
+              "around": "snowflake",
+              "before": "snowflake",
+              "after": "snowflake",
+              "limit": "integer"
+            }
+          },
+          {
+            "name": "Get Channel Message",
+            "method": "GET",
+            "url": "/channels/{channel.id}/messages/{message.id}"
+          },
+          {
+            "name": "Create Message",
+            "method": "POST",
+            "url": "/channels/{channel.id}/messages",
+            "json": {
+              "content": "string",
+              "tts": "boolean",
+              "file": "file contents",
+              "embeds": "array of embed objects",
+              "embed *(deprecated)*": "embed object",
+              "payload_json": "string",
+              "allowed_mentions": "allowed mention object",
+              "message_reference": "message reference",
+              "components": "array of message component objects",
+              "sticker_ids": "array of snowflakes"
+            }
+          },
+          {
+            "name": "Crosspost Message",
+            "method": "POST",
+            "url": "/channels/{channel.id}/messages/{message.id}/crosspost"
+          },
+          {
+            "name": "Create Reaction",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me"
+          },
+          {
+            "name": "Delete Own Reaction",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me"
+          },
+          {
+            "name": "Delete User Reaction",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/{user.id}"
+          },
+          {
+            "name": "Get Reactions",
+            "method": "GET",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions/{emoji}",
+            "json": {
+              "after": "snowflake",
+              "limit": "integer"
+            }
+          },
+          {
+            "name": "Delete All Reactions",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions"
+          },
+          {
+            "name": "Delete All Reactions for Emoji",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/messages/{message.id}/reactions/{emoji}"
+          },
+          {
+            "name": "Edit Message",
+            "method": "PATCH",
+            "url": "/channels/{channel.id}/messages/{message.id}",
+            "json": {
+              "content": "string",
+              "embeds": "array of embed objects",
+              "embed *(deprecated)*": "embed object",
+              "flags": "integer",
+              "file": "file contents",
+              "payload_json": "string",
+              "allowed_mentions": "allowed mention object",
+              "attachments": "array of attachment objects",
+              "components": "array of message component"
+            }
+          },
+          {
+            "name": "Delete Message",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/messages/{message.id}"
+          },
+          {
+            "name": "Bulk Delete Messages",
+            "method": "POST",
+            "url": "/channels/{channel.id}/messages/bulk-delete",
+            "json": {
+              "messages": "array of snowflakes"
+            }
+          },
+          {
+            "name": "Edit Channel Permissions",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/permissions/{overwrite.id}",
+            "json": {
+              "allow": "string",
+              "deny": "string",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "Get Channel Invites",
+            "method": "GET",
+            "url": "/channels/{channel.id}/invites"
+          },
+          {
+            "name": "Create Channel Invite",
+            "method": "POST",
+            "url": "/channels/{channel.id}/invites",
+            "json": {
+              "max_age": "integer",
+              "max_uses": "integer",
+              "temporary": "boolean",
+              "unique": "boolean",
+              "target_type": "integer",
+              "target_user_id": "snowflake",
+              "target_application_id": "snowflake"
+            }
+          },
+          {
+            "name": "Delete Channel Permission",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/permissions/{overwrite.id}"
+          },
+          {
+            "name": "Follow News Channel",
+            "method": "POST",
+            "url": "/channels/{channel.id}/followers",
+            "json": {
+              "webhook_channel_id": "snowflake"
+            }
+          },
+          {
+            "name": "Trigger Typing Indicator",
+            "method": "POST",
+            "url": "/channels/{channel.id}/typing"
+          },
+          {
+            "name": "Get Pinned Messages",
+            "method": "GET",
+            "url": "/channels/{channel.id}/pins"
+          },
+          {
+            "name": "Pin Message",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/pins/{message.id}"
+          },
+          {
+            "name": "Unpin Message",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/pins/{message.id}"
+          },
+          {
+            "name": "Group DM Add Recipient",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/recipients/{user.id}",
+            "json": {
+              "access_token": "string",
+              "nick": "string"
+            }
+          },
+          {
+            "name": "Group DM Remove Recipient",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/recipients/{user.id}"
+          },
+          {
+            "name": "Start Thread with Message",
+            "method": "POST",
+            "url": "/channels/{channel.id}/messages/{message.id}/threads",
+            "json": {
+              "name": "string",
+              "auto_archive_duration\\*": "integer"
+            }
+          },
+          {
+            "name": "Start Thread without Message",
+            "method": "POST",
+            "url": "/channels/{channel.id}/threads",
+            "json": {
+              "name": "string",
+              "auto_archive_duration\\*\\*": "integer",
+              "type?\\*\\*\\*": "integer"
+            }
+          },
+          {
+            "name": "Join Thread",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/thread-members/@me"
+          },
+          {
+            "name": "Add Thread Member",
+            "method": "PUT",
+            "url": "/channels/{channel.id}/thread-members/{user.id}"
+          },
+          {
+            "name": "Leave Thread",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/thread-members/@me"
+          },
+          {
+            "name": "Remove Thread Member",
+            "method": "DELETE",
+            "url": "/channels/{channel.id}/thread-members/{user.id}"
+          },
+          {
+            "name": "List Thread Members",
+            "method": "GET",
+            "url": "/channels/{channel.id}/thread-members"
+          },
+          {
+            "name": "List Active Threads",
+            "method": "GET",
+            "url": "/channels/{channel.id}/threads/active"
+          },
+          {
+            "name": "List Public Archived Threads",
+            "method": "GET",
+            "url": "/channels/{channel.id}/threads/archived/public",
+            "json": {
+              "before?": "ISO8601 timestamp",
+              "limit?": "integer"
+            }
+          },
+          {
+            "name": "List Private Archived Threads",
+            "method": "GET",
+            "url": "/channels/{channel.id}/threads/archived/private",
+            "json": {
+              "before?": "ISO8601 timestamp",
+              "limit?": "integer"
+            }
+          },
+          {
+            "name": "List Joined Private Archived Threads",
+            "method": "GET",
+            "url": "/channels/{channel.id}/users/@me/threads/archived/private",
+            "json": {
+              "before?": "snowflake",
+              "limit?": "integer"
+            }
+          }
+        ]
+      ]
+    },
+    "Emoji": {
+      "structures": [
+        {
+          "Emoji": {
+            "id": "?snowflake",
+            "name": "?string (can be null only in reaction emoji objects)",
+            "roles?": "array of role object ids",
+            "user?": "user object",
+            "require_colons?": "boolean",
+            "managed?": "boolean",
+            "animated?": "boolean",
+            "available?": "boolean"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "List Guild Emojis",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/emojis"
+          },
+          {
+            "name": "Get Guild Emoji",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/emojis/{emoji.id}"
+          },
+          {
+            "name": "Create Guild Emoji",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/emojis",
+            "json": {
+              "name": "string",
+              "image": "image data",
+              "roles": "array of snowflakes"
+            }
+          },
+          {
+            "name": "Modify Guild Emoji",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/emojis/{emoji.id}",
+            "json": {
+              "name": "string",
+              "roles": "?array of snowflakes"
+            }
+          },
+          {
+            "name": "Delete Guild Emoji",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/emojis/{emoji.id}"
+          }
+        ]
+      ]
+    },
+    "Guild": {
+      "structures": [
+        {
+          "Guild": {
+            "id": "snowflake",
+            "name": "string",
+            "icon": "?string",
+            "icon_hash?": "?string",
+            "splash": "?string",
+            "discovery_splash": "?string",
+            "owner? \\*\\*": "boolean",
+            "owner_id": "snowflake",
+            "permissions? \\*\\*": "string",
+            "region? \\*\\*\\*": "?string",
+            "afk_channel_id": "?snowflake",
+            "afk_timeout": "integer",
+            "widget_enabled?": "boolean",
+            "widget_channel_id?": "?snowflake",
+            "verification_level": "integer",
+            "default_message_notifications": "integer",
+            "explicit_content_filter": "integer",
+            "roles": "array of role objects",
+            "emojis": "array of emoji objects",
+            "features": "array of guild feature strings",
+            "mfa_level": "integer",
+            "application_id": "?snowflake",
+            "system_channel_id": "?snowflake",
+            "system_channel_flags": "integer",
+            "rules_channel_id": "?snowflake",
+            "joined_at? \\*": "ISO8601 timestamp",
+            "large? \\*": "boolean",
+            "unavailable? \\*": "boolean",
+            "member_count? \\*": "integer",
+            "voice_states? \\*": "array of partial voice state objects",
+            "members? \\*": "array of guild member objects",
+            "channels? \\*": "array of channel objects",
+            "threads? \\*": "array of channel objects",
+            "presences? \\*": "array of partial presence update objects",
+            "max_presences?": "?integer",
+            "max_members?": "integer",
+            "vanity_url_code": "?string",
+            "description": "?string",
+            "banner": "?string",
+            "premium_tier": "integer",
+            "premium_subscription_count?": "integer",
+            "preferred_locale": "string",
+            "public_updates_channel_id": "?snowflake",
+            "max_video_channel_users?": "integer",
+            "approximate_member_count?": "integer",
+            "approximate_presence_count?": "integer",
+            "welcome_screen?": "welcome screen object",
+            "nsfw_level": "integer",
+            "stage_instances? \\*": "array of stage instance objects",
+            "stickers?": "array of sticker objects"
+          },
+          "GuildPreview": {
+            "id": "snowflake",
+            "name": "string",
+            "icon": "?string",
+            "splash": "?string",
+            "discovery_splash": "?string",
+            "emojis": "array of emoji objects",
+            "features": "array of guild feature strings",
+            "approximate_member_count": "integer",
+            "approximate_presence_count": "integer",
+            "description": "?string"
+          },
+          "GuildWidget": {
+            "enabled": "boolean",
+            "channel_id": "?snowflake"
+          },
+          "GuildMember": {
+            "user?": "user object",
+            "nick?": "?string",
+            "roles": "array of snowflakes",
+            "joined_at": "ISO8601 timestamp",
+            "premium_since?": "?ISO8601 timestamp",
+            "deaf": "boolean",
+            "mute": "boolean",
+            "pending?": "boolean",
+            "permissions?": "string"
+          },
+          "Integration": {
+            "id": "snowflake",
+            "name": "string",
+            "type": "string",
+            "enabled": "boolean",
+            "syncing? \\*": "boolean",
+            "role_id? \\*": "snowflake",
+            "enable_emoticons? \\*": "boolean",
+            "expire_behavior? \\*": "integration expire behavior",
+            "expire_grace_period? \\*": "integer",
+            "user? \\*": "user object",
+            "account": "account object",
+            "synced_at? \\*": "ISO8601 timestamp",
+            "subscriber_count? \\*": "integer",
+            "revoked? \\*": "boolean",
+            "application?": "application object"
+          },
+          "IntegrationAccount": {
+            "id": "string",
+            "name": "string"
+          },
+          "IntegrationApplication": {
+            "id": "snowflake",
+            "name": "string",
+            "icon": "?string",
+            "description": "string",
+            "summary": "string",
+            "bot?": "user object"
+          },
+          "Ban": {
+            "reason": "?string",
+            "user": "user object"
+          },
+          "WelcomeScreen": {
+            "description": "?string",
+            "welcome_channels": "array of welcome screen channel objects"
+          },
+          "WelcomeScreenChannel": {
+            "channel_id": "snowflake",
+            "description": "string",
+            "emoji_id": "?snowflake",
+            "emoji_name": "?string"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Create Guild",
+            "method": "POST",
+            "url": "/guilds",
+            "json": {
+              "name": "string",
+              "region?": "?string",
+              "icon?": "image data",
+              "verification_level?": "integer",
+              "default_message_notifications?": "integer",
+              "explicit_content_filter?": "integer",
+              "roles?": "array of role objects",
+              "channels?": "array of partial channel objects",
+              "afk_channel_id?": "snowflake",
+              "afk_timeout?": "integer",
+              "system_channel_id?": "snowflake",
+              "system_channel_flags?": "integer"
+            }
+          },
+          {
+            "name": "Get Guild",
+            "method": "GET",
+            "url": "/guilds/{guild.id}",
+            "json": {
+              "with_counts?": "boolean"
+            }
+          },
+          {
+            "name": "Get Guild Preview",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/preview"
+          },
+          {
+            "name": "Modify Guild",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}",
+            "json": {
+              "name": "string",
+              "region": "?string",
+              "verification_level": "?integer",
+              "default_message_notifications": "?integer",
+              "explicit_content_filter": "?integer",
+              "afk_channel_id": "?snowflake",
+              "afk_timeout": "integer",
+              "icon": "?image data",
+              "owner_id": "snowflake",
+              "splash": "?image data",
+              "discovery_splash": "?image data",
+              "banner": "?image data",
+              "system_channel_id": "?snowflake",
+              "system_channel_flags": "integer",
+              "rules_channel_id": "?snowflake",
+              "public_updates_channel_id": "?snowflake",
+              "preferred_locale": "?string",
+              "features": "array of guild feature strings",
+              "description": "?string"
+            }
+          },
+          {
+            "name": "Delete Guild",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}"
+          },
+          {
+            "name": "Get Guild Channels",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/channels"
+          },
+          {
+            "name": "Create Guild Channel",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/channels",
+            "json": {
+              "name": "string",
+              "type": "integer",
+              "topic": "string",
+              "bitrate": "integer",
+              "user_limit": "integer",
+              "rate_limit_per_user": "integer",
+              "position": "integer",
+              "permission_overwrites": "array of overwrite objects",
+              "parent_id": "snowflake",
+              "nsfw": "boolean"
+            }
+          },
+          {
+            "name": "Modify Guild Channel Positions",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/channels",
+            "json": {
+              "id": "snowflake",
+              "position": "?integer",
+              "lock_permissions": "?boolean",
+              "parent_id": "?snowflake"
+            }
+          },
+          {
+            "name": "List Active Threads",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/threads/active"
+          },
+          {
+            "name": "Get Guild Member",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/members/{user.id}"
+          },
+          {
+            "name": "List Guild Members",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/members",
+            "json": {
+              "limit": "integer",
+              "after": "snowflake"
+            }
+          },
+          {
+            "name": "Search Guild Members",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/members/search",
+            "json": {
+              "query": "string",
+              "limit": "integer"
+            }
+          },
+          {
+            "name": "Add Guild Member",
+            "method": "PUT",
+            "url": "/guilds/{guild.id}/members/{user.id}",
+            "json": {
+              "access_token": "string",
+              "nick": "string",
+              "roles": "array of snowflakes",
+              "mute": "boolean",
+              "deaf": "boolean"
+            }
+          },
+          {
+            "name": "Modify Guild Member",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/members/{user.id}",
+            "json": {
+              "nick": "string",
+              "roles": "array of snowflakes",
+              "mute": "boolean",
+              "deaf": "boolean",
+              "channel_id": "snowflake"
+            }
+          },
+          {
+            "name": "Modify Current User Nick",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/members/@me/nick",
+            "json": {
+              "?nick": "?string"
+            }
+          },
+          {
+            "name": "Add Guild Member Role",
+            "method": "PUT",
+            "url": "/guilds/{guild.id}/members/{user.id}/roles/{role.id}"
+          },
+          {
+            "name": "Remove Guild Member Role",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/members/{user.id}/roles/{role.id}"
+          },
+          {
+            "name": "Remove Guild Member",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/members/{user.id}"
+          },
+          {
+            "name": "Get Guild Bans",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/bans"
+          },
+          {
+            "name": "Get Guild Ban",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/bans/{user.id}"
+          },
+          {
+            "name": "Create Guild Ban",
+            "method": "PUT",
+            "url": "/guilds/{guild.id}/bans/{user.id}",
+            "json": {
+              "delete_message_days?": "integer",
+              "reason?": "string"
+            }
+          },
+          {
+            "name": "Remove Guild Ban",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/bans/{user.id}"
+          },
+          {
+            "name": "Get Guild Roles",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/roles"
+          },
+          {
+            "name": "Create Guild Role",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/roles",
+            "json": {
+              "name": "string",
+              "permissions": "string",
+              "color": "integer",
+              "hoist": "boolean",
+              "mentionable": "boolean"
+            }
+          },
+          {
+            "name": "Modify Guild Role Positions",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/roles",
+            "json": {
+              "id": "snowflake",
+              "?position": "?integer"
+            }
+          },
+          {
+            "name": "Modify Guild Role",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/roles/{role.id}",
+            "json": {
+              "name": "string",
+              "permissions": "string",
+              "color": "integer",
+              "hoist": "boolean",
+              "mentionable": "boolean"
+            }
+          },
+          {
+            "name": "Delete Guild Role",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/roles/{role.id}"
+          },
+          {
+            "name": "Get Guild Prune Count",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/prune",
+            "json": {
+              "days": "integer",
+              "include_roles": "string; comma-delimited array of snowflakes"
+            }
+          },
+          {
+            "name": "Begin Guild Prune",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/prune",
+            "json": {
+              "days": "integer",
+              "compute_prune_count": "boolean",
+              "include_roles": "array of snowflakes",
+              "reason?": "string"
+            }
+          },
+          {
+            "name": "Get Guild Voice Regions",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/regions"
+          },
+          {
+            "name": "Get Guild Invites",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/invites"
+          },
+          {
+            "name": "Get Guild Integrations",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/integrations"
+          },
+          {
+            "name": "Delete Guild Integration",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/integrations/{integration.id}"
+          },
+          {
+            "name": "Get Guild Widget Settings",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/widget"
+          },
+          {
+            "name": "Modify Guild Widget",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/widget"
+          },
+          {
+            "name": "Get Guild Widget",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/widget.json"
+          },
+          {
+            "name": "Get Guild Vanity URL",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/vanity-url"
+          },
+          {
+            "name": "Get Guild Widget Image",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/widget.png",
+            "json": {
+              "style": "string"
+            }
+          },
+          {
+            "name": "Get Guild Welcome Screen",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/welcome-screen"
+          },
+          {
+            "name": "Modify Guild Welcome Screen",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/welcome-screen",
+            "json": {
+              "enabled": "boolean",
+              "welcome_channels": "array of welcome screen channel objects",
+              "description": "string"
+            }
+          },
+          {
+            "name": "Modify Current User Voice State",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/voice-states/@me",
+            "json": {
+              "channel_id": "snowflake",
+              "suppress?": "boolean",
+              "request_to_speak_timestamp?": "?ISO8601 timestamp"
+            }
+          },
+          {
+            "name": "Modify User Voice State",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/voice-states/{user.id}",
+            "json": {
+              "channel_id": "snowflake",
+              "suppress?": "boolean"
+            }
+          }
+        ]
+      ]
+    },
+    "Guild_Template": {
+      "structures": [
+        {
+          "GuildTemplate": {
+            "code": "string",
+            "name": "string",
+            "description": "?string",
+            "usage_count": "integer",
+            "creator_id": "snowflake",
+            "creator": "user object",
+            "created_at": "ISO8601 timestamp",
+            "updated_at": "ISO8601 timestamp",
+            "source_guild_id": "snowflake",
+            "serialized_source_guild": "partial guild object",
+            "is_dirty": "?boolean"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Guild Template",
+            "method": "GET",
+            "url": "/guilds/templates/{template.code}"
+          },
+          {
+            "name": "Create Guild from Guild Template",
+            "method": "POST",
+            "url": "/guilds/templates/{template.code}",
+            "json": {
+              "name": "string",
+              "icon?": "image data"
+            }
+          },
+          {
+            "name": "Get Guild Templates",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/templates"
+          },
+          {
+            "name": "Create Guild Template",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/templates",
+            "json": {
+              "name": "string",
+              "description?": "?string"
+            }
+          },
+          {
+            "name": "Sync Guild Template",
+            "method": "PUT",
+            "url": "/guilds/{guild.id}/templates/{template.code}"
+          },
+          {
+            "name": "Modify Guild Template",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/templates/{template.code}",
+            "json": {
+              "name?": "string",
+              "description?": "?string"
+            }
+          },
+          {
+            "name": "Delete Guild Template",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/templates/{template.code}"
+          }
+        ]
+      ]
+    },
+    "Invite": {
+      "structures": [
+        {
+          "Invite": {
+            "code": "string",
+            "guild?": "partial guild object",
+            "channel": "partial channel object",
+            "inviter?": "user object",
+            "target_type?": "integer",
+            "target_user?": "user object",
+            "target_application?": "partial application object",
+            "approximate_presence_count?": "integer",
+            "approximate_member_count?": "integer",
+            "expires_at?": "?ISO8601 timestamp",
+            "stage_instance?": "invite stage instance object"
+          },
+          "InviteMetadata": {
+            "uses": "integer",
+            "max_uses": "integer",
+            "max_age": "integer",
+            "temporary": "boolean",
+            "created_at": "ISO8601 timestamp"
+          },
+          "InviteStageInstance": {
+            "members": "array of partial guild member objects",
+            "participant_count": "integer",
+            "speaker_count": "integer",
+            "topic": "string"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Invite",
+            "method": "GET",
+            "url": "/invites/{invite.code}",
+            "json": {
+              "with_counts?": "boolean",
+              "with_expiration?": "boolean"
+            }
+          },
+          {
+            "name": "Delete Invite",
+            "method": "DELETE",
+            "url": "/invites/{invite.code}"
+          }
+        ]
+      ]
+    },
+    "Stage_Instance": {
+      "structures": [
+        {
+          "StageInstance": {
+            "id": "snowflake",
+            "guild_id": "snowflake",
+            "channel_id": "snowflake",
+            "topic": "string",
+            "privacy_level": "integer",
+            "discoverable_disabled": "boolean"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Create Stage Instance",
+            "method": "POST",
+            "url": "/stage-instances",
+            "json": {
+              "channel_id": "snowflake",
+              "topic": "string",
+              "privacy_level?": "integer"
+            }
+          },
+          {
+            "name": "Get Stage Instance",
+            "method": "GET",
+            "url": "/stage-instances/{channel.id}"
+          },
+          {
+            "name": "Modify Stage Instance",
+            "method": "PATCH",
+            "url": "/stage-instances/{channel.id}",
+            "json": {
+              "topic?": "string",
+              "privacy_level?": "integer"
+            }
+          },
+          {
+            "name": "Delete Stage Instance",
+            "method": "DELETE",
+            "url": "/stage-instances/{channel.id}"
+          }
+        ]
+      ]
+    },
+    "Sticker": {
+      "structures": [
+        {
+          "Sticker": {
+            "id": "snowflake",
+            "pack_id?": "snowflake",
+            "name": "string",
+            "description": "?string",
+            "tags": "string",
+            "asset": "string",
+            "type": "integer",
+            "format_type": "integer",
+            "available?": "boolean",
+            "guild_id?": "snowflake",
+            "user?": "user object",
+            "sort_value?": "integer"
+          },
+          "StickerItem": {
+            "id": "snowflake",
+            "name": "string",
+            "format_type": "integer"
+          },
+          "StickerPack": {
+            "id": "snowflake",
+            "stickers": "array of sticker objects",
+            "name": "string",
+            "sku_id": "snowflake",
+            "cover_sticker_id?": "snowflake",
+            "description": "string",
+            "banner_asset_id": "snowflake"
+          },
+          "Response": {
+            "sticker_packs": "array of sticker pack objects"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Sticker",
+            "method": "GET",
+            "url": "/stickers/{sticker.id}"
+          },
+          {
+            "name": "List Nitro Sticker Packs",
+            "method": "GET",
+            "url": "/sticker-packs"
+          },
+          {
+            "name": "List Guild Stickers",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/stickers"
+          },
+          {
+            "name": "Get Guild Sticker",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/stickers/{sticker.id}"
+          },
+          {
+            "name": "Create Guild Sticker",
+            "method": "POST",
+            "url": "/guilds/{guild.id}/stickers",
+            "json": {
+              "name": "string",
+              "description": "string",
+              "tags": "string",
+              "file": "file contents"
+            }
+          },
+          {
+            "name": "Modify Guild Sticker",
+            "method": "PATCH",
+            "url": "/guilds/{guild.id}/stickers/{sticker.id}",
+            "json": {
+              "name": "string",
+              "description": "?string",
+              "tags": "string"
+            }
+          },
+          {
+            "name": "Delete Guild Sticker",
+            "method": "DELETE",
+            "url": "/guilds/{guild.id}/stickers/{sticker.id}"
+          }
+        ]
+      ]
+    },
+    "User": {
+      "structures": [
+        {
+          "User": {
+            "id": "snowflake",
+            "username": "string",
+            "discriminator": "string",
+            "avatar": "?string",
+            "bot?": "boolean",
+            "system?": "boolean",
+            "mfa_enabled?": "boolean",
+            "locale?": "string",
+            "verified?": "boolean",
+            "email?": "?string",
+            "flags?": "integer",
+            "premium_type?": "integer",
+            "public_flags?": "integer"
+          },
+          "Connection": {
+            "id": "string",
+            "name": "string",
+            "type": "string",
+            "revoked?": "boolean",
+            "integrations?": "array",
+            "verified": "boolean",
+            "friend_sync": "boolean",
+            "show_activity": "boolean",
+            "visibility": "integer"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Current User",
+            "method": "GET",
+            "url": "/users/@me"
+          },
+          {
+            "name": "Get User",
+            "method": "GET",
+            "url": "/users/{user.id}"
+          },
+          {
+            "name": "Modify Current User",
+            "method": "PATCH",
+            "url": "/users/@me",
+            "json": {
+              "username": "string",
+              "avatar": "?image data"
+            }
+          },
+          {
+            "name": "Get Current User Guilds",
+            "method": "GET",
+            "url": "/users/@me/guilds",
+            "json": {
+              "before": "snowflake",
+              "after": "snowflake",
+              "limit": "integer"
+            }
+          },
+          {
+            "name": "Leave Guild",
+            "method": "DELETE",
+            "url": "/users/@me/guilds/{guild.id}"
+          },
+          {
+            "name": "Create DM",
+            "method": "POST",
+            "url": "/users/@me/channels",
+            "json": {
+              "recipient_id": "snowflake"
+            }
+          },
+          {
+            "name": "Create Group DM",
+            "method": "POST",
+            "url": "/users/@me/channels",
+            "json": {
+              "access_tokens": "array of strings",
+              "nicks": "dict"
+            }
+          },
+          {
+            "name": "Get User Connections",
+            "method": "GET",
+            "url": "/users/@me/connections"
+          }
+        ]
+      ]
+    },
+    "Voice": {
+      "structures": [
+        {
+          "VoiceState": {
+            "guild_id?": "snowflake",
+            "channel_id": "?snowflake",
+            "user_id": "snowflake",
+            "member?": "guild member object",
+            "session_id": "string",
+            "deaf": "boolean",
+            "mute": "boolean",
+            "self_deaf": "boolean",
+            "self_mute": "boolean",
+            "self_stream?": "boolean",
+            "self_video": "boolean",
+            "suppress": "boolean",
+            "request_to_speak_timestamp": "?ISO8601 timestamp"
+          },
+          "VoiceRegion": {
+            "id": "string",
+            "name": "string",
+            "vip": "boolean",
+            "optimal": "boolean",
+            "deprecated": "boolean",
+            "custom": "boolean"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "List Voice Regions",
+            "method": "GET",
+            "url": "/voice/regions"
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "structures": [
+        {
+          "Webhook": {
+            "id": "snowflake",
+            "type": "integer",
+            "guild_id?": "?snowflake",
+            "channel_id": "?snowflake",
+            "user?": "user object",
+            "name": "?string",
+            "avatar": "?string",
+            "token?": "string",
+            "application_id": "?snowflake",
+            "source_guild?": "partial guild object",
+            "source_channel?": "partial channel object",
+            "url?": "string"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Create Webhook",
+            "method": "POST",
+            "url": "/channels/{channel.id}/webhooks",
+            "json": {
+              "name": "string",
+              "avatar?": "?image data"
+            }
+          },
+          {
+            "name": "Get Channel Webhooks",
+            "method": "GET",
+            "url": "/channels/{channel.id}/webhooks"
+          },
+          {
+            "name": "Get Guild Webhooks",
+            "method": "GET",
+            "url": "/guilds/{guild.id}/webhooks"
+          },
+          {
+            "name": "Get Webhook",
+            "method": "GET",
+            "url": "/webhooks/{webhook.id}"
+          },
+          {
+            "name": "Get Webhook with Token",
+            "method": "GET",
+            "url": "/webhooks/{webhook.id}/{webhook.token}"
+          },
+          {
+            "name": "Modify Webhook",
+            "method": "PATCH",
+            "url": "/webhooks/{webhook.id}",
+            "json": {
+              "name": "string",
+              "avatar": "?image data",
+              "channel_id": "snowflake"
+            }
+          },
+          {
+            "name": "Modify Webhook with Token",
+            "method": "PATCH",
+            "url": "/webhooks/{webhook.id}/{webhook.token}"
+          },
+          {
+            "name": "Delete Webhook",
+            "method": "DELETE",
+            "url": "/webhooks/{webhook.id}"
+          },
+          {
+            "name": "Delete Webhook with Token",
+            "method": "DELETE",
+            "url": "/webhooks/{webhook.id}/{webhook.token}"
+          },
+          {
+            "name": "Execute Webhook",
+            "method": "POST",
+            "url": "/webhooks/{webhook.id}/{webhook.token}",
+            "json": {
+              "content": "string",
+              "username": "string",
+              "avatar_url": "string",
+              "tts": "boolean",
+              "file": "file contents",
+              "embeds": "array of up to 10 embed objects",
+              "payload_json": "string",
+              "allowed_mentions": "allowed mention object",
+              "components\\*": "array of message component"
+            }
+          },
+          {
+            "name": "Execute Slack-Compatible Webhook",
+            "method": "POST",
+            "url": "/webhooks/{webhook.id}/{webhook.token}/slack",
+            "json": {
+              "wait": "boolean"
+            }
+          },
+          {
+            "name": "Execute GitHub-Compatible Webhook",
+            "method": "POST",
+            "url": "/webhooks/{webhook.id}/{webhook.token}/github",
+            "json": {
+              "wait": "boolean"
+            }
+          },
+          {
+            "name": "Get Webhook Message",
+            "method": "GET",
+            "url": "/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}"
+          },
+          {
+            "name": "Edit Webhook Message",
+            "method": "PATCH",
+            "url": "/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}",
+            "json": {
+              "content": "string",
+              "embeds": "array of up to 10 embed objects",
+              "file": "file contents",
+              "payload_json": "string",
+              "allowed_mentions": "allowed mention object",
+              "attachments": "array of attachment objects",
+              "components\\*": "array of message component"
+            }
+          }
+        ]
+      ]
+    },
+    "Gateway": {
+      "structures": [
+        {
+          "GatewayPayload": {
+            "op": "integer",
+            "d": "?mixed (any JSON value)",
+            "s": "?integer \\*",
+            "t": "?string \\*"
+          },
+          "Identify": {
+            "token": "string",
+            "properties": "object",
+            "compress?": "boolean",
+            "large_threshold?": "integer",
+            "shard?": "array of two integers (shard_id, num_shards)",
+            "presence?": "update presence object",
+            "intents": "integer"
+          },
+          "Resume": {
+            "token": "string",
+            "session_id": "string",
+            "seq": "integer"
+          },
+          "GuildRequestMembers": {
+            "guild_id": "snowflake",
+            "query?": "string",
+            "limit": "integer",
+            "presences?": "boolean",
+            "user_ids?": "snowflake or array of snowflakes",
+            "nonce?": "string"
+          },
+          "GatewayVoiceStateUpdate": {
+            "guild_id": "snowflake",
+            "channel_id": "?snowflake",
+            "self_mute": "boolean",
+            "self_deaf": "boolean"
+          },
+          "GatewayPresenceUpdate": {
+            "since": "?integer",
+            "activities": "array of activity objects",
+            "status": "string",
+            "afk": "boolean"
+          },
+          "Hello": {
+            "heartbeat_interval": "integer"
+          },
+          "Activity": {
+            "name": "string",
+            "type": "integer",
+            "url?": "?string",
+            "created_at": "integer",
+            "timestamps?": "timestamps object",
+            "application_id?": "snowflake",
+            "details?": "?string",
+            "state?": "?string",
+            "emoji?": "?emoji object",
+            "party?": "party object",
+            "assets?": "assets object",
+            "secrets?": "secrets object",
+            "instance?": "boolean",
+            "flags?": "integer",
+            "buttons?": "array of buttons"
+          },
+          "SessionStartLimit": {
+            "total": "integer",
+            "remaining": "integer",
+            "reset_after": "integer",
+            "max_concurrency": "integer"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Gateway",
+            "method": "GET",
+            "url": "/gateway"
+          },
+          {
+            "name": "Get Gateway Bot",
+            "method": "GET",
+            "url": "/gateway/bot"
+          }
+        ]
+      ]
+    },
+    "OAuth2": {
+      "structures": [
+        {
+          "Response": {
+            "application": "partial application object",
+            "scopes": "array of strings",
+            "expires": "ISO8601 timestamp",
+            "user?": "user object"
+          }
+        }
+      ],
+      "requests": [
+        [
+          {
+            "name": "Get Current Bot Application Information",
+            "method": "GET",
+            "url": "/oauth2/applications/@me"
+          },
+          {
+            "name": "Get Current Authorization Information",
+            "method": "GET",
+            "url": "/oauth2/@me"
+          }
+        ]
+      ]
+    },
+    "Permissions": {
+      "structures": [
+        {
+          "Role": {
+            "id": "snowflake",
+            "name": "string",
+            "color": "integer",
+            "hoist": "boolean",
+            "position": "integer",
+            "permissions": "string",
+            "managed": "boolean",
+            "mentionable": "boolean",
+            "tags?": "role tags object"
+          },
+          "RoleTags": {
+            "bot_id?": "snowflake",
+            "integration_id?": "snowflake",
+            "premium_subscriber?": "null"
+          }
+        }
+      ]
+    },
+    "RPC": {
+      "structures": [
+        {
+          "Payload": {
+            "cmd": "enum",
+            "nonce": "string",
+            "evt": "enum",
+            "data": "object",
+            "args": "object"
+          },
+          "AuthorizeArgument": {
+            "scopes": "array of OAuth2 scopes",
+            "client_id": "string",
+            "rpc_token": "string",
+            "username": "string"
+          },
+          "AuthorizeResponse": {
+            "code": "string"
+          },
+          "AuthenticateArgument": {
+            "access_token": "string"
+          },
+          "AuthenticateResponse": {
+            "user": "partial user object",
+            "scopes": "array of OAuth2 scopes",
+            "expires": "date",
+            "application": "OAuth2 application object"
+          },
+          "OAuth2Application": {
+            "description": "string",
+            "icon": "string",
+            "id": "snowflake",
+            "rpc_origins": "array of strings",
+            "name": "string"
+          },
+          "GetGuildsResponse": {
+            "guilds": "array of partial guild objects"
+          },
+          "GetGuildArgument": {
+            "guild_id": "string",
+            "timeout": "integer"
+          },
+          "GetGuildResponse": {
+            "id": "string",
+            "name": "string",
+            "icon_url": "string",
+            "members": "array of guild member objects"
+          },
+          "GetChannelArgument": {
+            "channel_id": "string"
+          },
+          "GetChannelResponse": {
+            "id": "string",
+            "guild_id": "string",
+            "name": "string",
+            "type": "integer",
+            "topic": "string",
+            "bitrate": "integer",
+            "user_limit": "integer",
+            "position": "integer",
+            "voice_states": "array of voice state objects",
+            "messages": "array of message objects"
+          },
+          "GetChannelsArgument": {
+            "guild_id": "string"
+          },
+          "GetChannelsResponse": {
+            "channels": "array of partial channel objects"
+          },
+          "SetUserVoiceSettingsArgumentandResponse": {
+            "user_id": "string",
+            "pan?": "pan object",
+            "volume?": "integer",
+            "mute?": "boolean"
+          },
+          "SelectVoiceChannelArgument": {
+            "channel_id": "string",
+            "timeout": "integer",
+            "force": "boolean"
+          },
+          "SelectTextChannelArgument": {
+            "channel_id": "string",
+            "timeout": "integer"
+          },
+          "GetVoiceSettingsResponse": {
+            "input": "voice settings input object",
+            "output": "voice settings output object",
+            "mode": "voice settings mode object",
+            "automatic_gain_control": "boolean",
+            "echo_cancellation": "boolean",
+            "noise_suppression": "boolean",
+            "qos": "boolean",
+            "silence_warning": "boolean",
+            "deaf": "boolean",
+            "mute": "boolean"
+          },
+          "SetVoiceSettingsArgumentandResponse": {
+            "input": "voice settings input object",
+            "output": "voice settings output object",
+            "mode": "voice settings mode object",
+            "automatic_gain_control": "boolean",
+            "echo_cancellation": "boolean",
+            "noise_suppression": "boolean",
+            "qos": "boolean",
+            "silence_warning": "boolean",
+            "deaf": "boolean",
+            "mute": "boolean"
+          },
+          "SubscribeResponse": {
+            "evt": "string"
+          },
+          "UnsubscribeResponse": {
+            "evt": "string"
+          },
+          "SetActivityArgument": {
+            "pid": "integer",
+            "activity": "activity object"
+          },
+          "SendActivityJoinInviteArgument": {
+            "user_id": "snowflake"
+          },
+          "CloseActivityRequestArgument": {
+            "user_id": "snowflake"
+          },
+          "ReadyDispatchData": {
+            "v": "integer",
+            "config": "rpc server configuration object",
+            "user": "partial user object"
+          },
+          "ErrorData": {
+            "code": "integer",
+            "message": "string"
+          },
+          "GuildStatusArgument": {
+            "guild_id": "string"
+          },
+          "GuildStatusDispatchData": {
+            "guild": "partial guild object",
+            "online": "integer"
+          },
+          "GuildCreateDispatchData": {
+            "id": "string",
+            "name": "string"
+          },
+          "ChannelCreateDispatchData": {
+            "id": "string",
+            "name": "string",
+            "type": "integer"
+          },
+          "VoiceChannelSelectDispatchData": {
+            "channel_id": "string",
+            "guild_id": "string"
+          },
+          "VoiceStateArgument": {
+            "channel_id": "string"
+          },
+          "VoiceConnectionStatusDispatchData": {
+            "state": "string",
+            "hostname": "string",
+            "pings": "array of integers",
+            "average_ping": "integer",
+            "last_ping": "integer"
+          },
+          "MessageArgument": {
+            "channel_id": "string"
+          },
+          "SpeakingArgument": {
+            "channel_id": "string"
+          },
+          "SpeakingDispatchData": {
+            "user_id": "string"
+          },
+          "NotificationCreateDispatchData": {
+            "channel_id": "string",
+            "message": "message object",
+            "icon_url": "string",
+            "title": "string",
+            "body": "string"
+          },
+          "ActivityJoinDispatchData": {
+            "secret": "string"
+          },
+          "ActivitySpectateDispatchData": {
+            "secret": "string"
+          },
+          "ActivityJoinRequestData": {
+            "user": "partial user object"
+          }
+        }
+      ]
+    },
+    "Rate_Limits": {
+      "structures": [
+        {
+          "RateLimitResponse": {
+            "message": "string",
+            "retry_after": "float",
+            "global": "boolean"
+          }
+        }
+      ]
+    },
+    "Voice_Connections": {
+      "structures": [
+        {
+          "VoicePacket": {
+            "Version + Flags": "Single byte value of `0x80`",
+            "Payload Type": "Single byte value of `0x78`",
+            "Sequence": "Unsigned short (big endian)",
+            "Timestamp": "Unsigned integer (big endian)",
+            "SSRC": "Unsigned integer (big endian)",
+            "Encrypted audio": "Binary data"
+          }
+        }
+      ]
+    }
+  }
